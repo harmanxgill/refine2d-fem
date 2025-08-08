@@ -5,7 +5,7 @@ from .mesh import unit_square_tri_mesh
 from .assemble import assemble_poisson
 from .boundary import apply_dirichlet
 from .error import zz_error_indicators
-from .refine import mark_top_fraction, refine_uniform
+from .refine import mark_top_fraction, refine_nvb
 from .io_vtk import write_vtu
 
 def manufactured_u(x,y):
@@ -58,10 +58,9 @@ def solve_adaptive(nx=8, ny=8, cycles=1, refine_frac=0.3):
         # write VTK
         write_vtu(coords, tris, point_data={"u": u}, cell_data={"eta":[eta]}, path=f"out/solution_cycle{cycle}.vtu")
 
-        # mark and refine (placeholder uniform refinement)
+        # mark and refine using NVB
         marked = mark_top_fraction(eta, frac=refine_frac)
-        # TODO: replace with conformity-preserving NVB
-        coords, tris = refine_uniform(coords, tris)
+        coords, tris = refine_nvb(coords, tris, marked)
         # recompute boundary mask (still unit square)
         tol = 1e-12
         bx = (np.abs(coords[:,0])<tol) | (np.abs(coords[:,0]-1.0)<tol)
