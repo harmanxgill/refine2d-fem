@@ -48,7 +48,7 @@ def solve_adaptive(nx=8, ny=8, cycles=1, refine_frac=0.3):
         g = manufactured_u(coords[:,0], coords[:,1])
         A, b = apply_dirichlet(A, b, bmask, g)
 
-        u, info = cg(A, b, tol=1e-10, maxiter=200)
+        u, info = cg(A, b, rtol=1e-10, maxiter=200)
         if info != 0:
             print("CG did not fully converge, info=", info)
 
@@ -56,7 +56,7 @@ def solve_adaptive(nx=8, ny=8, cycles=1, refine_frac=0.3):
         eta = zz_error_indicators(coords, tris, u)
 
         # write VTK
-        write_vtu(coords, tris, point_data={"u": u}, cell_data={"eta":[eta]}, path=f"/mnt/data/out/solution_cycle{cycle}.vtu")
+        write_vtu(coords, tris, point_data={"u": u}, cell_data={"eta":[eta]}, path=f"out/solution_cycle{cycle}.vtu")
 
         # mark and refine (placeholder uniform refinement)
         marked = mark_top_fraction(eta, frac=refine_frac)

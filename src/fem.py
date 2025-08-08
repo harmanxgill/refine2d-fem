@@ -31,7 +31,7 @@ def tri_grad_phi(coords, tri):
     x2, y2 = x[2]
 
     # Compute the Jacobian matrix
-    J = np.array([x1-x0, x2-x0], [y1-y0, y2-y0], dtype=float)
+    J = np.array([[x1-x0, x2-x0], [y1-y0, y2-y0]], dtype=float)
 
     detJ = np.linalg.det(J)
 
