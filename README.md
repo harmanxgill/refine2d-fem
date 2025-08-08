@@ -91,7 +91,7 @@ $$
 - Recover a smoother "nodal gradient" by averaging over neighbors.
 - Compare the two; large differences mean large error.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -124,7 +124,7 @@ This writes `out/solution_cycle0.vtu`; open it in ParaView to see the solution a
 - **Zienkiewicz-Zhu Error Estimation**: Post-processing error estimator using gradient recovery
 - **Conjugate Gradient Solver**: Iterative solver for sparse symmetric positive definite systems
 
-## 🎨 Visualization
+## Visualization
 
 ### ParaView (Recommended)
 ```bash
