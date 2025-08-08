@@ -60,12 +60,12 @@ def visualize_vtu(vtu_file):
         ax.set_ylabel('y')
     
     plt.tight_layout()
-    plt.savefig('solution_visualization.png', dpi=150, bbox_inches='tight')
-    print("Saved visualization as 'solution_visualization.png'")
+    plt.savefig('outputs/images/solution_visualization.png', dpi=150, bbox_inches='tight')
+    print("Saved visualization as 'outputs/images/solution_visualization.png'")
     plt.show()
 
 if __name__ == "__main__":
-    vtu_file = "out/solution_cycle0.vtu"
+    vtu_file = "outputs/vtu/solution_cycle0.vtu"
     if not os.path.exists(vtu_file):
         print(f"Error: VTU file {vtu_file} not found!")
         print("Please run the Poisson solver first: python examples/run_poisson.py")

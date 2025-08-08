@@ -14,7 +14,7 @@ from matplotlib.tri import Triangulation
 import meshio
 from src.solve import solve_adaptive
 
-def visualize_cycle(coords, tris, u, eta, cycle, save_path="out"):
+def visualize_cycle(coords, tris, u, eta, cycle, save_path="outputs/images"):
     """Create visualization for a single refinement cycle."""
     
     # Create triangulation
@@ -63,8 +63,10 @@ def run_adaptive_demo(nx=8, ny=8, cycles=4, refine_frac=0.3):
     print(f"  Refinement fraction: {refine_frac}")
     print("-" * 50)
     
-    # Create output directory
-    os.makedirs("out", exist_ok=True)
+    # Create output directories
+    os.makedirs("outputs/vtu", exist_ok=True)
+    os.makedirs("outputs/images", exist_ok=True)
+    os.makedirs("outputs/animations", exist_ok=True)
     
     # Run the adaptive solver
     coords, tris, u, eta = solve_adaptive(nx=nx, ny=ny, cycles=cycles, refine_frac=refine_frac)
@@ -79,7 +81,7 @@ def run_adaptive_demo(nx=8, ny=8, cycles=4, refine_frac=0.3):
     print("\nGenerating visualizations...")
     for cycle in range(cycles):
         # Read the VTU file for this cycle
-        vtu_file = f"out/solution_cycle{cycle}.vtu"
+        vtu_file = f"outputs/vtu/solution_cycle{cycle}.vtu"
         if os.path.exists(vtu_file):
             mesh = meshio.read(vtu_file)
             points = mesh.points[:, :2]
@@ -89,9 +91,9 @@ def run_adaptive_demo(nx=8, ny=8, cycles=4, refine_frac=0.3):
             
             visualize_cycle(points, triangles, u_cycle, eta_cycle, cycle)
     
-    print(f"\nVisualizations saved to out/cycle_XX.png")
+    print(f"\nVisualizations saved to outputs/images/cycle_XX.png")
     print("You can create a GIF using:")
-    print("  convert -delay 100 -loop 0 out/cycle_*.png out/refinement_animation.gif")
+    print("  convert -delay 100 -loop 0 outputs/images/cycle_*.png outputs/animations/refinement_animation.gif")
 
 if __name__ == "__main__":
     # Run the demo

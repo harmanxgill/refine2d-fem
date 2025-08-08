@@ -56,7 +56,7 @@ def solve_adaptive(nx=8, ny=8, cycles=1, refine_frac=0.3):
         eta = zz_error_indicators(coords, tris, u)
 
         # write VTK
-        write_vtu(coords, tris, point_data={"u": u}, cell_data={"eta":[eta]}, path=f"out/solution_cycle{cycle}.vtu")
+        write_vtu(coords, tris, point_data={"u": u}, cell_data={"eta":[eta]}, path=f"outputs/vtu/solution_cycle{cycle}.vtu")
 
         # mark and refine using NVB
         marked = mark_top_fraction(eta, frac=refine_frac)
