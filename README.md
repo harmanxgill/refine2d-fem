@@ -14,7 +14,7 @@ It's written in Python for clarity, but the structure is designed to port cleanl
 
 ### Adaptive Mesh Refinement Animation
 
-![Adaptive Mesh Refinement](../outputs/animations/refinement_animation.gif)
+![Adaptive Mesh Refinement](outputs/animations/refinement_animation.gif)
 
 The animation shows:
 - **Left**: Mesh evolution from coarse to fine in high-error regions
