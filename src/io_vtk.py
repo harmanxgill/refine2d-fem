@@ -2,7 +2,7 @@ import meshio
 import numpy as np
 import os
 
-def write_vtu(coords, tris, point_data=None, cell_data=None, path="out/solution.vtu"):
+def write_vtu(coords, tris, point_data=None, cell_data=None, path="outputs/vtu/solution.vtu"):
     """
     Write a VTU file.
     Args:

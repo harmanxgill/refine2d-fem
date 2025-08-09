@@ -113,10 +113,16 @@ pip install -r requirements.txt
 python examples/run_poisson.py
 
 # Run full adaptive refinement demo with visualization
-python run_adaptive_refinement.py
+python scripts/run_adaptive_refinement.py
+
+# Or use the main demo script
+python scripts/run_demo.py
 ```
 
-This writes `out/solution_cycle0.vtu`; open it in ParaView to see the solution and error indicator.
+This creates output files in the `outputs/` directory:
+- **VTU files**: `outputs/vtu/solution_cycle*.vtu` (for ParaView)
+- **Images**: `outputs/images/cycle_*.png` (mesh, solution, error indicators)
+- **Animations**: `outputs/animations/refinement_animation.gif`
 
 ### Key Algorithms
 
@@ -128,13 +134,15 @@ This writes `out/solution_cycle0.vtu`; open it in ParaView to see the solution a
 
 ### ParaView (Recommended)
 ```bash
-paraview out/solution_cycle0.vtu
+paraview outputs/vtu/solution_cycle0.vtu
 ```
 
 ### Python Visualization
 ```bash
-python visualize_solution.py
+python scripts/visualize_solution.py
 ```
+
+This creates `outputs/images/solution_visualization.png` with the solution and error indicators.
 
 ## Verification
 
