@@ -14,7 +14,7 @@ It's written in Python for clarity, but the structure is designed to port cleanl
 
 ### Adaptive Mesh Refinement Animation
 
-![Adaptive Mesh Refinement](out/refinement_animation.gif)
+![Adaptive Mesh Refinement](../outputs/animations/refinement_animation.gif)
 
 The animation shows:
 - **Left**: Mesh evolution from coarse to fine in high-error regions
@@ -156,4 +156,3 @@ This allows us to verify the numerical accuracy and convergence properties.
 - Hughes, T. J. R. (2000). The finite element method: Linear static and dynamic finite element analysis. Dover Publications. (Original work published 1987)
 - Ladevèze, P., & Pelle, J.-P. (2004). Mastering calculation in linear and nonlinear mechanics. Springer. https://doi.org/10.1007/978-0-387-21787-2
 - Ainsworth, M., & Oden, J. T. (1997). A posteriori error estimation in finite element analysis. Computer Methods in Applied Mechanics and Engineering, 142(1–2), 1–88. https://doi.org/10.1016/S0045-7825(96)01107-3
-
